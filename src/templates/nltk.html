@@ -83,7 +83,6 @@ Evolving from older bat-and-ball games, an early form of baseball was being play
             method: 'POST',
             data: 'test='+text,
             success: function(data){
-                console.log(JSON.parse(data));
                 self.setStructuredText(JSON.parse(data).list);
             }
         });

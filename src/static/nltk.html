@@ -79,9 +79,9 @@ Evolving from older bat-and-ball games, an early form of baseball was being play
         //self.setStructuredText(list);
 
         $.ajax({
-            url: 'http://52.79.78.128:8000/hello3/',
+            url: 'http://52.79.78.128:8000/postag/',
             method: 'POST',
-            data: 'test='+text,
+            data: 'document='+text,
             success: function(data){
                 console.log(JSON.parse(data));
                 self.setStructuredText(JSON.parse(data).list);
@@ -96,9 +96,9 @@ Evolving from older bat-and-ball games, an early form of baseball was being play
         var self = this;
 
         $.ajax({
-            url: 'http://52.79.78.128:8000/hello4/',
+            url: 'http://52.79.78.128:8000/synsets/',
             method: 'POST',
-            data: 'test='+text+'&type='+type,
+            data: 'word='+text+'&pos='+type,
             success: function(data){
                 self.setSysnsets(JSON.parse(data).list);
             }

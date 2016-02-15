@@ -15,20 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.conf.urls.static import static
-from django.contrib import admin
 
 from . import settings
-from .views import hello
-from .views import hello2
-from .views import hello3
-from .views import hello4
+from .views import postag
+from .views import synsets
 from .views import index
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^hello/$', hello),
-    url(r'^hello2/$', hello2),
-    url(r'^hello3/$', hello3),
-    url(r'^hello4/$', hello4),
+    url(r'^postag/$', postag),
+    url(r'^synsets/$', synsets),
     url(r'^$', index)
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

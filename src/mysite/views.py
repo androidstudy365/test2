@@ -4,23 +4,18 @@ from django.shortcuts import render
 import nltk
 import json
 from nltk.corpus import wordnet
-
-
-ks = word_tokenize("Hello World. It's goot to see you. Thanks for buying this book.")
-
-def hello(request):
-    kk = json.dumps({'list': ks})
-    return HttpResponse(kk)
-
-def hello2(request):
-    return HttpResponse(request.GET['test'])
-
 from django.views.decorators.csrf import csrf_exempt
+
+
+def index(request):
+    return render(request, 'nltk.html', {})
+
+
 @csrf_exempt
-def hello3(request):
+def postag(request):
     list = []
-    print(request.POST['test'])
-    texts = nltk.word_tokenize(request.POST['test'])
+    print(request.POST['document'])
+    texts = nltk.word_tokenize(request.POST['document'])
     tags = nltk.pos_tag(texts)
 
     for word in tags:
@@ -28,9 +23,6 @@ def hello3(request):
 
     kk = json.dumps({'list': list})
     return HttpResponse(kk)
-
-def index(request):
-    return render(request, 'nltk.html', {})
 
 def difIndex(str1, str2):
     index = 0
@@ -41,24 +33,28 @@ def difIndex(str1, str2):
     return index
 
 @csrf_exempt
-def hello4(request):
+def synsets(request):
     list = []
-    name = request.POST['test'].lower()
-    type = request.POST['type'].lower()
+    name = request.POST['word'].lower()
+    type = request.POST['pos'].lower()
     syn = wordnet.synsets(name)
-    difIndexs = 0
-    compIndex = 0
+    difIndex = 0
     for synset in syn:
         if(synset.pos()!=type):
             continue
 
-        compIndex = difIndex(name, synset.name())
-        if(difIndexs<compIndex):
+        compIndex = difIndex
+        while True:
+            if(name[:compIndex]!=synset.name()[:compIndex]):
+                break
+            else: compIndex=compIndex+1
+
+        if(difIndex<compIndex):
             list=[]
             difIndexs = compIndex
             list.append(synset.name())
             list.append(synset.definition())
-        elif(difIndexs==compIndex):
+        elif(difIndex==compIndex):
             list.append(synset.name())
             list.append(synset.definition())
 
