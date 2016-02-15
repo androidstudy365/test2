@@ -24,13 +24,7 @@ def postag(request):
     kk = json.dumps({'list': list})
     return HttpResponse(kk)
 
-def difIndex(str1, str2):
-    index = 0
-    while True:
-        if(str1[:index]!=str2[:index]):
-            break
-        else: index=index+1
-    return index
+
 
 @csrf_exempt
 def synsets(request):
