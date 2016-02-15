@@ -1,1 +1,0 @@
-nohup python3.4 manage.py runserver &
