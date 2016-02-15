@@ -1,5 +1,4 @@
 from django.http import HttpResponse
-from nltk.tokenize import word_tokenize
 from django.shortcuts import render
 import nltk
 import json

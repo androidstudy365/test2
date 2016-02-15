@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title></title>
 
-    <link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="/static/css/nltk.css"/>
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./css/nltk.css"/>
 
 </head>
 <body>
@@ -42,7 +42,7 @@ Evolving from older bat-and-ball games, an early form of baseball was being play
 </div>
 
 
-<script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script>
 
     function selectNoun(target){
@@ -79,10 +79,11 @@ Evolving from older bat-and-ball games, an early form of baseball was being play
         //self.setStructuredText(list);
 
         $.ajax({
-            url: 'http://52.79.78.128:8000/hello3/',
+            url: 'http://52.79.78.128:8000/postag/',
             method: 'POST',
-            data: 'test='+text,
+            data: 'document='+text,
             success: function(data){
+                console.log(JSON.parse(data));
                 self.setStructuredText(JSON.parse(data).list);
             }
         });
@@ -95,9 +96,9 @@ Evolving from older bat-and-ball games, an early form of baseball was being play
         var self = this;
 
         $.ajax({
-            url: 'http://52.79.78.128:8000/hello4/',
+            url: 'http://52.79.78.128:8000/synsets/',
             method: 'POST',
-            data: 'test='+text+'&type='+type,
+            data: 'word='+text+'&pos='+type,
             success: function(data){
                 self.setSysnsets(JSON.parse(data).list);
             }
