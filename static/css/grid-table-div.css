@@ -1,0 +1,88 @@
+.grid-table {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.grid-table .scroll-layer {
+  border: 1px solid #CCCCCC;
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.grid-table .scroll-layer .data-layer {
+  width: 780px;
+  height: 290px;
+  position: relative;
+}
+.grid-table .view-layer {
+  width: 385px;
+  height: 185px;
+  top: 1px;
+  left: 1px;
+  position: relative;
+  overflow: hidden;
+}
+.grid-table .view-layer .data-table {
+  width: 780px;
+  height: 100%;
+  left: 0px;
+  position: relative;
+}
+.grid-table .view-layer .data-table .header {
+  border-bottom: 1px solid #CCCCCC;
+  height: 30px;
+  background-color: #EEEEEE;
+  z-index: 2;
+  position: relative;
+}
+.grid-table .view-layer .data-table .header .column {
+  display: inline-block;
+  width: 150px;
+  height: 100%;
+  float: left;
+  text-align: center;
+  line-height: 30px;
+  position: relative;
+  border-right: 1px solid #CCCCCC;
+}
+.grid-table .view-layer .data-table .header .line {
+  left: 0;
+  width: 30px;
+  height: 100%;
+  background-color: #EEEEEE;
+  z-index: 1;
+}
+.grid-table .view-layer .data-table .body {
+  height: 100%;
+  position: relative;
+  top: 0;
+  background-color: #ffffff;
+}
+.grid-table .view-layer .data-table .body .table-row {
+  border-bottom: 1px solid #CCCCCC;
+  height: 25px;
+  position: relative;
+}
+.grid-table .view-layer .data-table .body .table-row .cell {
+  display: inline-block;
+  width: 150px;
+  height: 100%;
+  float: left;
+  text-align: left;
+  line-height: 100%;
+  padding-left: 15px;
+  position: relative;
+  border-right: 1px solid #CCCCCC;
+}
+.grid-table .view-layer .data-table .body .table-row .line {
+  left: 0px;
+  width: 30px;
+  height: 100%;
+  background-color: #EEEEEE;
+  padding: 0;
+  z-index: 1;
+}

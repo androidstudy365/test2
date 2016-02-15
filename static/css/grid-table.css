@@ -1,0 +1,228 @@
+.layer {
+  width: 400px;
+  height: 30px;
+  position: relative;
+  overflow: hidden;
+  background-color: #EEEEEE;
+}
+.layer .right-box {
+  position: absolute;
+  top: 0;
+  right: -1px;
+  width: 17px;
+  height: 30px;
+  border-left: 1px solid #d3d3d3;
+  background-color: #EEEEEE;
+}
+.layer .clone {
+  height: 30px;
+  position: absolute;
+  top: 0;
+  background-color: #EEEEEE;
+  overflow: hidden;
+}
+.layer .clone table {
+  table-layout: fixed;
+  min-width: 1630px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 0;
+}
+.layer .clone table colgroup col {
+  width: 100px;
+}
+.layer .clone table colgroup col:first-child {
+  width: 30px;
+}
+.layer .clone table thead tr {
+  top: 0px;
+}
+.layer .clone table thead tr th {
+  top: inherit;
+  position: relative;
+  z-index: 1;
+}
+.layer .clone table tbody {
+  background-color: #ffffff;
+  color: #333;
+  font-size: 12px;
+}
+.layer .clone table tbody tr td {
+  height: 26px;
+  line-height: 26px;
+}
+.layer .clone table tbody tr td:first-child > .cell {
+  text-align: center;
+  padding: 0;
+  background-color: #EEEEEE;
+}
+.layer .clone table .column {
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #eeeeee;
+  font-size: 12px;
+  font-weight: 300;
+  border-right: 1px solid #cccccc;
+  border-bottom: none;
+}
+.layer .clone table .column .resize-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 30px;
+}
+.layer .clone table .column .resize-bar:hover {
+  background-color: #00a8c6;
+  cursor: col-resize;
+}
+.layer .clone table .column .resize-bar.selected {
+  background-color: #00a8c6;
+  cursor: col-resize;
+}
+.layer .clone table .cell {
+  padding: 0 10px;
+  text-align: left;
+  border-right: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.layer .clone table .cell.selected {
+  border: 1px solid #00a8c6;
+}
+.grid-table {
+  width: 100%;
+  height: 100%;
+  top: -30px;
+  background-color: #EEEEEE;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  overflow: auto;
+}
+.grid-table table {
+  table-layout: fixed;
+  min-width: 1630px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 0;
+}
+.grid-table table colgroup col {
+  width: 100px;
+}
+.grid-table table colgroup col:first-child {
+  width: 30px;
+}
+.grid-table table thead tr {
+  top: 0px;
+}
+.grid-table table thead tr th {
+  top: inherit;
+  position: relative;
+}
+.grid-table table tbody {
+  background-color: #ffffff;
+  color: #333;
+  font-size: 12px;
+}
+.grid-table table tbody tr td {
+  height: 26px;
+  line-height: 26px;
+}
+.grid-table table tbody tr td:first-child > .cell {
+  text-align: center;
+  padding: 0;
+  background-color: #EEEEEE;
+}
+.grid-table table .column {
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #eeeeee;
+  font-size: 12px;
+  font-weight: 300;
+  border-right: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+}
+.grid-table table .column .resize-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 30px;
+}
+.grid-table table .column .resize-bar:hover {
+  background-color: #00a8c6;
+  cursor: col-resize;
+}
+.grid-table table .column .resize-bar.selected {
+  background-color: #00a8c6;
+  cursor: col-resize;
+}
+.grid-table table .cell {
+  padding: 0 10px;
+  text-align: left;
+  border-right: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.grid-table table .cell.selected {
+  border: 1px solid #00a8c6;
+}
+.grid-table #layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.grid-table #layer .edit-box {
+  top: 30px;
+  left: 30px;
+  position: absolute;
+  background-color: #ffffff;
+  overflow: auto;
+}
+.grid-table #layer .edit-box textarea {
+  min-width: 149px;
+  min-height: 26px;
+  width: 149px;
+  height: 26px;
+  border: 1px solid red;
+  overflow: auto;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+}
+.grid-table #layer .resize-box {
+  width: 5px;
+  height: 30px;
+  left: 0px;
+  top: 0;
+  position: absolute;
+  z-index: 1;
+  cursor: col-resize;
+  display: none;
+  background-color: #00a8c6;
+}
+.grid-table #layer .resize-guideline {
+  position: absolute;
+  width: 1px;
+  right: 0;
+  top: 0;
+  height: 100%;
+  border: 1px dashed red;
+}
+.grid-table #layer .resize-guideline.active {
+  border-right: 1px dashed #00a8c6;
+}

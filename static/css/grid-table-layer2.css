@@ -1,0 +1,177 @@
+.grid-table {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.grid-table .view-layer {
+  height: 283px;
+  overflow: hidden;
+  z-index: 2;
+  border-top: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  position: relative;
+}
+.grid-table .view-layer .table-layer {
+  top: 0;
+  left: -1px;
+  position: absolute;
+}
+.grid-table .scroll-layer {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  background-color: #ffffff;
+  overflow: scroll;
+  border: 1px solid #cccccc;
+}
+.grid-table .scroll-layer .data-layer-size {
+  position: relative;
+  width: 781px;
+  height: 25030px;
+  top: 0;
+}
+.grid-table .scroll-layer .layer {
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 1;
+}
+.grid-table .scroll-layer .layer .resize-bar-layer {
+  display: none;
+  position: fixed;
+  width: 5px;
+  z-index: 100;
+  background-color: #00a8c6;
+  cursor: col-resize;
+}
+.grid-table .scroll-layer .layer .select-cell {
+  display: none;
+  position: absolute;
+  border: 2px solid #00a8c6;
+}
+.grid-table .scroll-layer .layer .editing-cell {
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 30px;
+  position: absolute;
+  background-color: #ffffff;
+}
+.grid-table .scroll-layer .layer .editing-cell textarea {
+  width: 100%;
+  height: 100%;
+  border: 2px solid red;
+  /*min-width: 149px;
+                    min-height: 26px;
+                    width: 149px;
+                    height: 26px;
+                    border: 1px solid red;
+                    overflow: auto;*/
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+}
+.grid-table table {
+  table-layout: fixed;
+  width: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 0;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+.grid-table table colgroup col {
+  width: 150px;
+}
+.grid-table table colgroup col:first-child {
+  width: 30px;
+}
+.grid-table table thead tr {
+  height: 30px;
+  line-height: 30px;
+}
+.grid-table table thead tr th {
+  text-align: center;
+  background-color: #eeeeee;
+  border-right: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  cursor: default;
+}
+.grid-table table thead tr th .line {
+  background-color: #eeeeee;
+  text-align: center;
+  padding: 0;
+  border-right: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  display: inline-block;
+  width: 31px;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  bottom: 0;
+  z-index: 1;
+}
+.grid-table table thead tr th .column {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.grid-table table thead tr th .column .resize-bar {
+  position: absolute;
+  right: 0;
+  width: 5px;
+  height: 100%;
+}
+.grid-table table thead tr th .column .resize-bar:hover {
+  background-color: #00a8c6;
+  cursor: col-resize;
+}
+.grid-table table tbody tr {
+  height: 24px;
+  line-height: 24px;
+  border-bottom: 1px solid #cccccc;
+}
+.grid-table table tbody tr td {
+  height: 100%;
+  background-color: #ffffff;
+  border-right: 1px solid #cccccc;
+  font-size: 12px;
+  text-align: left;
+  padding-left: 10px;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: default;
+}
+.grid-table table tbody tr td .line {
+  background-color: #eeeeee;
+  text-align: center;
+  padding: 0;
+  border-right: 1px solid #cccccc;
+  display: inline-block;
+  width: 31px;
+  height: inherit;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
+.grid-table table tbody tr td:first-child {
+  background-color: #eeeeee;
+  text-align: center;
+  padding: 0;
+  /*position: relative;
+                    left: 120px;
+                    top: 0;*/
+}

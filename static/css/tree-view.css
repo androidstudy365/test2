@@ -1,0 +1,113 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+.tree-view-area {
+  width: 300px;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+}
+.tree-view {
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #EEEEEE;
+  position: relative;
+}
+.tree-view .header {
+  padding-left: 20px;
+  height: 40px;
+  line-height: 40px;
+  color: #888;
+  background-color: #f1f3f5;
+  font-weight: 700;
+}
+.tree-view .content {
+  overflow-y: auto;
+  width: 100%;
+  position: absolute;
+  top: 40px;
+  bottom: 0;
+}
+.tree-view .content ul:first-child {
+  padding-left: 5px;
+}
+.tree-view .content ul {
+  margin: 0;
+  padding-left: 25px;
+  list-style: none;
+}
+.tree-view .content ul li {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.tree-view .content ul li .item {
+  height: 30px;
+  line-height: 30px;
+}
+.tree-view .content ul li .item .layer {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: inherit;
+}
+.tree-view .content ul li .item .item-content {
+  height: 25px;
+}
+.tree-view .content ul li .item .item-content .extend-icon.glyphicon {
+  color: #666;
+  width: 24px;
+}
+.tree-view .content ul li .item .item-content .leaf-node-icon.glyphicon {
+  color: #fb7a35;
+  width: 20px;
+  font-size: 14px;
+}
+.tree-view .content ul li .item .item-content .leaf-node-icon.glyphicon:before {
+  content: "\e022";
+}
+.tree-view .content ul li .item .item-content .container-node-icon.glyphicon {
+  color: #666;
+  width: 24px;
+  font-size: 14px;
+}
+.tree-view .content ul li .item .item-content .container-node-icon.glyphicon:before {
+  content: "";
+}
+.tree-view .content ul li .item .item-content span {
+  display: inline-block;
+  line-height: 25px;
+  color: #444;
+  position: relative;
+}
+.tree-view .content ul li .item:hover .layer {
+  background-color: #c8e5bc;
+}
+.tree-view .content ul li .item.selected .layer {
+  background-color: #6383ee;
+}
+.tree-view .content ul li .item.selected .extend-icon.glyphicon {
+  color: #eeeeee;
+}
+.tree-view .content ul li .item.selected span {
+  color: #ffffff;
+}
+.tree-view .content ul li.shorten > ul {
+  display: none;
+}
+.tree-view .content ul li.shorten .extend-icon.glyphicon:before {
+  content: "\e250";
+}
+.tree-view .content ul li.extended > ul {
+  display: block;
+}
+.tree-view .content ul li.extended > .item .item-content > .extend-icon.glyphicon:before {
+  content: "\e252";
+}

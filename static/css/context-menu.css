@@ -1,0 +1,56 @@
+.context-menu {
+  display: none;
+  border: 1px solid #dddddd;
+  background-color: #ffffff;
+  width: 150px;
+  position: fixed;
+  color: #444;
+}
+.context-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.context-menu ul li {
+  line-height: 30px;
+  border-bottom: 1px solid #dddddd;
+  padding-left: 20px;
+  cursor: default;
+  position: relative;
+}
+.context-menu ul li span {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.context-menu ul li i.glyphicon-triangle-right {
+  float: right;
+  right: 20px;
+  line-height: 28px;
+  position: absolute;
+}
+.context-menu ul li .sub-menu {
+  display: none;
+}
+.context-menu ul li:hover {
+  background-color: #638DFE;
+  color: white;
+}
+.context-menu ul li:hover .sub-menu {
+  color: #444;
+}
+.context-menu ul li:hover .sub-menu li:hover {
+  color: white;
+}
+.context-menu ul li:hover > .sub-menu {
+  display: block;
+  position: absolute;
+  left: 148px;
+  top: -1px;
+  width: 100px;
+  background-color: #ffffff;
+  border: 1px solid #EEEEEE;
+}
+.context-menu ul li:last-child {
+  border: none;
+}
