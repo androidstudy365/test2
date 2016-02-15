@@ -24,7 +24,13 @@ def postag(request):
     kk = json.dumps({'list': list})
     return HttpResponse(kk)
 
-
+def difIndex(str1, str2):
+    index = 0
+    while True:
+        if(str1[:index]!=str2[:index]):
+            break
+        else: index=index+1
+    return index
 
 @csrf_exempt
 def synsets(request):
@@ -32,23 +38,18 @@ def synsets(request):
     name = request.POST['word'].lower()
     type = request.POST['pos'].lower()
     syn = wordnet.synsets(name)
-    difIndex = 0
+    difIndexs = 0
     for synset in syn:
         if(synset.pos()!=type):
             continue
 
-        compIndex = difIndex
-        while True:
-            if(name[:compIndex]!=synset.name()[:compIndex]):
-                break
-            else: compIndex=compIndex+1
-
-        if(difIndex<compIndex):
+        compIndex = difIndex(name, synset.name())
+        if(difIndexs<compIndex):
             list=[]
             difIndexs = compIndex
             list.append(synset.name())
             list.append(synset.definition())
-        elif(difIndex==compIndex):
+        elif(difIndexs==compIndex):
             list.append(synset.name())
             list.append(synset.definition())
 
