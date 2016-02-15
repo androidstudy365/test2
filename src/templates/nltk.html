@@ -13,17 +13,27 @@
 <div class="app">
 
     <div class="menubar">
-        <div class="btn menu glyphicon glyphicon-play" onclick="test()"></div>
+        <div class="btn menu glyphicon glyphicon-play" onclick="structuredText()"></div>
+        <input type="checkbox" onclick="selectNoun(this)"/>명사
+        <input type="checkbox" onclick="selectVerb(this)"/>동사
     </div>
     <div class="content">
         <div class="origin">
-            <div class="header">Origin Text1111</div>
+            <div class="header">Origin Text</div>
             <div class="content">
-                <textarea></textarea>
+                <textarea>The batting team attempts to score runs by hitting a ball that is thrown by the pitcher with a bat swung by the batter, then running counter-clockwise around a series of four bases: first, second, third, and home plate. A run is scored when a player advances around the bases and returns to home plate.
+
+Players on the batting team take turns hitting against the pitcher of the fielding team, which tries to prevent runs by getting hitters out in any of several ways. A player on the batting team who reaches a base safely can later attempt to advance to subsequent bases during teammates' turns batting, such as on a hit or by other means. The teams switch between batting and fielding whenever the fielding team records three outs. One turn batting for both teams, beginning with the visiting team, constitutes an inning. A game comprises nine innings, and the team with the greater number of runs at the end of the game wins. Baseball is the only major team sport in America with no game clock, although almost all games end in the ninth inning.
+
+Evolving from older bat-and-ball games, an early form of baseball was being played in England by the mid-18th century. This game was brought by immigrants to North America, where the modern version developed. By the late 19th century, baseball was widely recognized as the national sport of the United States. Baseball is now popular in North America and parts of Central and South America, the Caribbean, and East Asia.</textarea>
             </div>
 
         </div>
         <div class="analysis">
+            <div class="header">Structured Text</div>
+            <div class="content"></div>
+        </div>
+        <div class="synset">
             <div class="header">Structured Text</div>
             <div class="content"></div>
         </div>
@@ -35,27 +45,85 @@
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script>
 
-    function test(){
+    function selectNoun(target){
+        var checked = $(target).is(":checked");
+        if(checked) $('.nn').addClass('selected');
+        else $('.nn').removeClass('selected');
+        if(checked) $('.nnp').addClass('selected');
+        else $('.nnp').removeClass('selected');
+        if(checked) $('.nns').addClass('selected');
+        else $('.nns').removeClass('selected');
+        if(checked) $('.nnps').addClass('selected');
+        else $('.nnps').removeClass('selected');
+    }
+
+
+    function selectVerb(target){
+        var checked = $(target).is(":checked");
+        if(checked) $('.vb').addClass('selected');
+        else $('.vb').removeClass('selected');
+        if(checked) $('.vbz').addClass('selected');
+        else $('.vbz').removeClass('selected');
+        if(checked) $('.vbd').addClass('selected');
+        else $('.vbd').removeClass('selected');
+        if(checked) $('.vbg').addClass('selected');
+        else $('.vbg').removeClass('selected');
+        if(checked) $('.vbn').addClass('selected');
+        else $('.vbn').removeClass('selected');
+        if(checked) $('.vbp').addClass('selected');
+        else $('.vbp').removeClass('selected');
+    }
+    function structuredText(){
         var text = $('.content > textarea')[0].value;
+        var self = this;
+        //self.setStructuredText(list);
 
         $.ajax({
-            url: 'http://127.0.0.1:8000/hello2?test=test',
-            method: 'GET',
+            url: 'http://52.79.78.128:8000/hello3/',
+            method: 'POST',
+            data: 'test='+text,
             success: function(data){
-                alert(data);
+                console.log(JSON.parse(data));
+                self.setStructuredText(JSON.parse(data).list);
             }
         });
-        console.log(text);
+    }
+    function getSynsets(target){
+        var text = $(target).text();
+        var type = $(target).attr('type')[0];
+        if(type=='j') type = 'a';
+
+        var self = this;
+
+        $.ajax({
+            url: 'http://52.79.78.128:8000/hello4/',
+            method: 'POST',
+            data: 'test='+text+'&type='+type,
+            success: function(data){
+                self.setSysnsets(JSON.parse(data).list);
+            }
+        });
     }
 
-    var analysisArea = $('.analysis > .content')[0];
-    var html = '';
-    for(var i=0 ; i<list.length ; i++){
-        var word = list[i];
-        html += '<span class="'+word[1].toLowerCase()+'">'+word[0]+'</span> ';
+    function setStructuredText(list){
+        var analysisArea = $('.analysis > .content')[0];
+        var html = '';
+        for(var i=0 ; i<list.length ; i++){
+            var word = list[i];
+            html += '<span type="'+word[1].toLowerCase()+'" class="'+word[1].toLowerCase()+'" onclick="getSynsets(this)">'+word[0]+'</span> ';
+        }
+        analysisArea.innerHTML = html;
     }
-    analysisArea.innerHTML = html;
-    console.log(html);
+    function setSysnsets(list){
+        var synsetArea = $('.synset > .content')[0];
+        var html = '';
+        for(var i=0 ; i<list.length ; i++){
+            if(i%2==0) html += '<p>';
+            html += list[i]+'<br>';
+        }
+        synsetArea.innerHTML = html;
+    }
+
 </script>
 
 </body>
